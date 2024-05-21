@@ -2,10 +2,10 @@ package repository
 
 import "github.com/jmoiron/sqlx"
 
-type TodoListPostgres struct {
+type StarsPostgres struct {
 	db *sqlx.DB
 }
 
-func NewRatingsPostgres(db *sqlx.DB) *TodoListPostgres {
-	return &TodoListPostgres{db: db}
+func NewRatingsPostgres(db *sqlx.DB) *StarsPostgres {
+	return &StarsPostgres{db: db}
 }

@@ -4,14 +4,11 @@ import (
 	service "rate/pkg/service/mocks"
 
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/files"
-	"github.com/swaggo/gin-swagger"
 )
 
 type Handler struct {
 	services *service.Service
 }
-
 
 func NewHandler(services *service.Service) *Handler {
 	return &Handler{services: services}
@@ -19,17 +16,13 @@ func NewHandler(services *service.Service) *Handler {
 
 func (h *Handler) InitRoutes() *gin.Engine {
 	router := gin.New()
+	router.Static("/assets", "./assets")
+	router.LoadHTMLGlob("/home/r_rmarsu/Rate/assets/index.html")
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
+	rates := router.Group("/rates")
 	{
-		ratings := router.Group("/ratings")
-		{
-			ratings.POST("/", )
-			ratings.GET("/", h.getActual)
-			ratings.PUT("/:id", h.updateRating)
-			ratings.DELETE("/:id", h.deleteRating)
+		rates.GET("/main", h.mainweb)
+		rates.POST("/rate", h.updateRating)
 	}
-}
 	return router
 }

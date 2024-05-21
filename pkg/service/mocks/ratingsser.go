@@ -1,13 +1,13 @@
 package service
 
 import (
-    "rate/pkg/repository"
+	"rate/pkg/repository"
 )
 
-type TodoListService struct {
+type RatingsService struct {
 	repo repository.Stars
 }
 
-func NewTodoListService(repo repository.Stars) *TodoListService {
-    return &TodoListService{repo: repo}
+func NewRatings(repo repository.Stars) *RatingsService {
+	return &RatingsService{repo: repo}
 }
