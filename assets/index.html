@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css" media="screen">
       <!-- 
-          @import url("/assets/main.css");
+            @import url("/assets/styles.css");
       -->
     </style>
     <title>Оценивалки</title>
@@ -15,6 +15,7 @@
       {{ .title }}
     </h1>
     <p>Оценивай вещички ,это сохранится в датабазу и мы высчитаем средний результат!</p>
+    <img src="https://i.pinimg.com/1200x/95/af/32/95af32a36fd8c693916ee4697de0048a.jpg">
     <br/>
     <span onclick="gfg(1)"
           class="star">★
@@ -34,6 +35,35 @@
     <h3 id="output">
           Rating is: 0/5
       </h3>
-    <script src="script.js"></script>
+      <button>Submit!</button>
+    <script>
+      let stars = 
+	document.getElementsByClassName("star");
+let output = 
+	document.getElementById("output");
+
+// Funtion to update rating
+function gfg(n) {
+	remove();
+	for (let i = 0; i < n; i++) {
+		if (n == 1) cls = "one";
+		else if (n == 2) cls = "two";
+		else if (n == 3) cls = "three";
+		else if (n == 4) cls = "four";
+		else if (n == 5) cls = "five";
+		stars[i].className = "star " + cls;
+	}
+	output.innerText = "Rating is: " + n + "/5";
+}
+
+// To remove the pre-applied styling
+function remove() {
+	let i = 0;
+	while (i < 5) {
+		stars[i].className = "star";
+		i++;
+	}
+}
+      </script>
 </body>
 </html>
