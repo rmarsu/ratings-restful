@@ -5,20 +5,17 @@ import (
 	"rate/pkg/repository"
 )
 
-//go:generate mockgen -source=service.go -destination=mocks/mock.go
 type Stars interface {
-	Create(int, list rate.Stars) (int, error)
+	Create(list rate.Stars) (int, error)
 }
 
-type Ratings interface {
-}
 
 type Service struct {
-	Ratings
+	Stars
 }
 
 func NewService(repos *repository.Repository) *Service {
 	return &Service{
-		Ratings: NewRatings(repos.Stars),
+		Stars:   NewRatingsService(repos.Stars),
 	}
 }

@@ -22,7 +22,7 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	rates := router.Group("/rates")
 	{
 		rates.GET("/main", h.mainweb)
-		rates.POST("/rate", h.updateRating)
+		rates.POST("/rate", h.AddRating)
 	}
 	return router
 }

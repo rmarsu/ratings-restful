@@ -35,15 +35,14 @@
     <h3 id="output">
           Rating is: 0/5
       </h3>
-      <button>Submit!</button>
     <script>
       let stars = 
 	document.getElementsByClassName("star");
 let output = 
 	document.getElementById("output");
 
-// Funtion to update rating
 function gfg(n) {
+      var rating = n
 	remove();
 	for (let i = 0; i < n; i++) {
 		if (n == 1) cls = "one";
@@ -54,7 +53,18 @@ function gfg(n) {
 		stars[i].className = "star " + cls;
 	}
 	output.innerText = "Rating is: " + n + "/5";
+      fetch('http://localhost:8090/rates/rate', {
+            method: 'POST',
+            headers: {
+                  'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                  'object': 'Cats',
+                  'stars': n
+            })
+       });
 }
+
 
 // To remove the pre-applied styling
 function remove() {

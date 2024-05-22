@@ -38,9 +38,6 @@ func main() {
 	services := service.NewService(repos)
 	handlers := handler.NewHandler(services)
 
-	//InitRoutes inizilize the project as REST
-	//Handler and Server defines...
-
 	srv := new(rate.Server)
 	if err := srv.Run(viper.GetString("port"), handlers.InitRoutes()); err != nil {
 		logrus.Fatal("runerr", err.Error())

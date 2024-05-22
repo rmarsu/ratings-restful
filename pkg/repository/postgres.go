@@ -1,13 +1,11 @@
 package repository
 
 import (
-
 	"github.com/jmoiron/sqlx"
 )
 
 const (
-	ActualContent = "content"
-	Rating        = "rating"
+	Rating = "rating"
 )
 
 type Config struct {
